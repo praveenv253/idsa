@@ -9,6 +9,7 @@ from stack import Stack
 
 # Expression error signalling some manner of error in the input expression
 class ExpressionError(Exception):
+    """Class to raise errors in the input expression."""
     pass
 
 # Acquire string from program arguments
@@ -54,6 +55,7 @@ for token in string.split(' '):
         s.push(num)
 
 if len(s) > 1:
+    # There shouldn't be any numbers left in the stack at this point
     raise ExpressionError('Too many numbers')
 try:
     # At the end, pop the result and print it

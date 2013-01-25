@@ -10,6 +10,7 @@ from stack import Stack
 
 # Expression error signalling some manner of error in the input expression
 class ExpressionError(Exception):
+    """Class to raise errors in the input expression."""
     pass
 
 # Acquire string from program arguments
@@ -80,12 +81,16 @@ for token in tokens:
             if top == '^':
                 raise ExpressionError('Cascaded ^ operators causes ambiguity')
             s.push(token)
+        # Multiplication and division have the same precedence. Order is
+        # determined by order of appearance
         elif token in ['*', '/']:
             top = s.peek()
             while top in ['^', '*', '/']:
                 postfix += s.pop() + ' '
                 top = s.peek()
             s.push(token)
+        # Addition and subtraction have the same precedence. Order is
+        # determined by order of appearance
         elif token in ['+', '-']:
             top = s.peek()
             while top in ['^', '*', '/', '+', '-']:
