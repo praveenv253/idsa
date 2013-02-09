@@ -1,0 +1,8 @@
+A + B
+A - B / C
+A ^ - B
+- B ^ A
+( a + b ) * ( b + c ) / ( c + d ) * ( e + f ) ^ g * - h
+a ^ b ^ c
+sqrt ( a + b ) * ( a + sqrt b ) + sqrt ( - a )
+- a ^ - a
