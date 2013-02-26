@@ -1,6 +1,4 @@
-insert 7438
-insert 6052
-insert 8132
-print_pre
-insert 8873
-print_post
+insert 4.3
+insert 3.2
+insert 4.1
+print_sort

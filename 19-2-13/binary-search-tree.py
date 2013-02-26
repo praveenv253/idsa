@@ -7,6 +7,7 @@ class TreeElem(object):
     """
     def __init__(self, value):
         self.value = value
+        self.occurrences = 1
 
 
 class BinarySearchTree(object):
@@ -38,6 +39,9 @@ class BinarySearchTree(object):
                 except AttributeError:
                     loc.left = TreeElem(value)
                     found = True
+            else:
+                loc.occurrences += 1
+                found = True
     
     @classmethod
     def _pre(cls, node):
@@ -72,6 +76,24 @@ class BinarySearchTree(object):
     def postorder(self):
         if not self.empty:
             self._post(self.root)
+    
+    @classmethod
+    def _inorder(cls, node):
+        try:
+            cls._inorder(node.left)
+        except AttributeError:
+            pass
+        # It is expected that each node will have a value
+        for i in xrange(node.occurrences):
+            print node.value
+        try:
+            cls._inorder(node.right)
+        except AttributeError:
+            pass
+    
+    def inorder(self):
+        if not self.empty:
+            self._inorder(self.root)
 
 
 if __name__ == '__main__':
@@ -81,11 +103,13 @@ if __name__ == '__main__':
     for line in sys.stdin.readlines():
         op = line.split()[0]
         if op == 'insert':
-            value = int(line.split()[1])
+            value = float(line.split()[1])
             if bst.empty:
                 bst = BinarySearchTree(value)
             else:
                 bst.insert(value)
+        elif op == 'print_sort':
+            bst.inorder()
         elif op == 'print_pre':
             bst.preorder()
         elif op == 'print_post':
