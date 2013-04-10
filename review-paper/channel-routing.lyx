@@ -1,0 +1,106 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman charter
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wire Routing by Optimizing Channel Assignment
+\end_layout
+
+\begin_layout Author
+Praveen Venkatesh
+\begin_inset Newline newline
+\end_inset
+
+EE10B028
+\end_layout
+
+\begin_layout Abstract
+This review paper talks about an efficient method of routing wires between
+ components in a two-layer printed circuit board.
+ While this 
+\begin_inset Quotes eld
+\end_inset
+
+Left Edge
+\begin_inset Quotes erd
+\end_inset
+
+ algorithm was initally introduced by its authors for this purpose, it now
+ finds use in an analogous problem in VLSI physical design.
+ The problem is defined as follows: given 
+\begin_inset Formula $N$
+\end_inset
+
+ wires that must be placed in given intervals, what is the minimum number
+ of parallel channels required to accommodate the wires, on the condition
+ that wires of overlapping intervals may not lie in the same channel? The
+ paper by Hashimoto and Stevens, which introduced the Left Edge algorithm,
+ showed that this problem can be solved in 
+\begin_inset Formula $\mathcal{O}(N\, logN)$
+\end_inset
+
+ time.
+ The algorithm relies on a greedy mechanism for choosing wires, which provably
+ leads to the optimal solution.
+\end_layout
+
+\end_body
+\end_document
