@@ -1,0 +1,261 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman charter
+\font_sans default
+\font_typewriter courier
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 3cm
+\rightmargin 2.5cm
+\bottommargin 3cm
+\headheight 1cm
+\headsep 2cm
+\footskip 5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Quiz 9: Supplementary question
+\end_layout
+
+\begin_layout Author
+Praveen Venkatesh
+\begin_inset Newline newline
+\end_inset
+
+EE10B028
+\end_layout
+
+\begin_layout Standard
+Let 
+\family typewriter
+\bar under
+p
+\family default
+\bar default
+ be the vector of payoffs 
+\begin_inset Formula $\{p_{i}\}_{i=1}^{N}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\{t_{i}\}$
+\end_inset
+
+ are the respective deadlines.
+ The index 
+\begin_inset Formula $i$
+\end_inset
+
+ denotes the task number.
+ The optimal algorithm is described below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+\noindent
+\begin_inset Formula $\ $
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+todo = zero vector // Final schedule: Do task todo[i] in time step i.
+\end_layout
+
+\begin_layout LyX-Code
+while 
+\bar under
+p
+\bar default
+ is not empty
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+i = index{extractmax
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+
+(
+\bar under
+p
+\bar default
+)}
+\end_layout
+
+\begin_layout LyX-Code
+if todo[t
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+
+] is empty:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+todo[t
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+
+] = i
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+else:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+insert i in the first empty slot to the left of t
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+
+ in todo
+\end_layout
+
+\begin_layout LyX-Code
+if no empty slots:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+// Cannot schedule.
+ Push to last.
+\end_layout
+
+\begin_layout LyX-Code
+insert i in the first empty slot from the end of todo
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since tasks of any given payoff take the same amount of time to complete,
+ we would always prefer to do a task with higher payoff.
+ In other words, out of the tasks that are yet to be scheduled, we would
+ always want to try to perform the task with the highest payoff.
+\end_layout
+
+\begin_layout Standard
+The algorithm, therefore, greedily picks the task with the largest payoff
+ and places it as close to that task's deadline as possible.
+ Thus, at any stage, the tasks that have already been scheduled (tasks in
+ 
+\family typewriter
+todo
+\family default
+) are of higher payoff than tasks that are yet to be scheduled (tasks in
+ 
+\family typewriter
+\bar under
+p
+\family default
+\bar default
+).
+ Each of these tasks has been scheduled by attempting to place it to the
+ left of its deadline.
+ The only way that it could not have found a place before its deadline is
+ if all of these slots were already filled.
+ But that implies that there were tasks of higher payoff than the one which
+ we were trying to schedule.
+ The algorithm has therefore correctly scheduled tasks with higher payoff,
+ putting off ones with a lower payoff to the end.
+\end_layout
+
+\begin_layout Standard
+This is evidence of optimal sub-structure: tasks that are scheduled are
+ always of the highest payoff.
+ Clearly, the locally greedy approach maintains the optimal sub-structure
+ by picking the highest available paying task for scheduling next.
+\end_layout
+
+\end_body
+\end_document
