@@ -120,7 +120,7 @@ status open
 \end_layout
 
 \begin_layout LyX-Code
-todo = zero vector // Final schedule: Do task todo[i] in time step i.
+todo = zero vector // Final schedule: Do task todo[t] in time step t.
 \end_layout
 
 \begin_layout LyX-Code
@@ -131,9 +131,8 @@ p
  is not empty
 \end_layout
 
-\begin_deeper
 \begin_layout LyX-Code
-i = index{extractmax
+    i = index{extractmax
 \begin_inset script subscript
 
 \begin_layout Plain Layout
@@ -150,7 +149,7 @@ p
 \end_layout
 
 \begin_layout LyX-Code
-if todo[t
+    if todo[t
 \begin_inset script subscript
 
 \begin_layout Plain Layout
@@ -162,9 +161,8 @@ i
 ] is empty:
 \end_layout
 
-\begin_deeper
 \begin_layout LyX-Code
-todo[t
+        todo[t
 \begin_inset script subscript
 
 \begin_layout Plain Layout
@@ -176,14 +174,12 @@ i
 ] = i
 \end_layout
 
-\end_deeper
 \begin_layout LyX-Code
-else:
+    else:
 \end_layout
 
-\begin_deeper
 \begin_layout LyX-Code
-insert i in the first empty slot to the left of t
+        insert i in the first empty slot to the left of t
 \begin_inset script subscript
 
 \begin_layout Plain Layout
@@ -196,22 +192,18 @@ i
 \end_layout
 
 \begin_layout LyX-Code
-if no empty slots:
+        if no empty slots:
 \end_layout
 
-\begin_deeper
 \begin_layout LyX-Code
-// Cannot schedule.
+            // Cannot schedule.
  Push to last.
 \end_layout
 
 \begin_layout LyX-Code
-insert i in the first empty slot from the end of todo
+            insert i in the first empty slot from the end of todo
 \end_layout
 
-\end_deeper
-\end_deeper
-\end_deeper
 \end_inset
 
 
