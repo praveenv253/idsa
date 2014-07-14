@@ -9,14 +9,14 @@ import heapq
 # Apart from this, we also need to maintain a heap, in order to be able to
 # quickly find the minimum current distance estimate
 if __name__ == '__main__':
-    
+
     num_test_cases = int(sys.stdin.readline().replace('\n', ''))
-    
+
     for test_case_index in xrange(num_test_cases):
         # Number of vertices and edges
         v, k = sys.stdin.readline().split()
         v, k = int(v), int(k)
-        
+
         Q = [[float('inf'), i] for i in xrange(v)]  # Heap for extractmin
         V = [[] for i in xrange(v)]     # Initialize empty adjacency list
         Qdict = {}                      # Used to get the ith node's info
@@ -30,27 +30,27 @@ if __name__ == '__main__':
             i -= 1
             j -= 1
             V[i].append((j, w))
-        
+
         a, b = sys.stdin.readline().split()
         a, b = int(a), int(b)
         a -= 1
         b -= 1
-        
+
         Qdict[a][0] = 0
-        
+
         # Now let's heapify Q. Ouch.
         heapq.heapify(Q)
-        
+
         # Here starts Dijkstra
         while Q:
-            
+
             # u and v are elements of Q
             u = heapq.heappop(Q)
             node_index = u[1]
             if node_index < 0:                  # Check if the node index is a
                                                 # valid one
                 continue
-            
+
             # Iterate through adjacent nodes
             for adj_node in Vdict[node_index]:
                 adj_node_index = adj_node[0]
@@ -63,9 +63,9 @@ if __name__ == '__main__':
                                                 # setting its node index to -1
                     Qdict[adj_node_index] = v_new
                     heapq.heappush(Q, v_new)    # Add the new Qelem
-        
+
         # Done with Dijkstra!
-        
+
         min_dist = Qdict[b][0]
         if min_dist < float('inf'):
             print min_dist

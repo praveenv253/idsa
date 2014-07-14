@@ -22,7 +22,7 @@ def main():
             while q[i] == q[j] and j:
                 i += 1
                 j -= 1
-            
+
             # If the entire string is a palindrome, then j would have become 0
             # and i would have become l-1
             if j == 0 and q[i] == q[j]:
@@ -40,7 +40,7 @@ def main():
                         replacement = 0
                     else:
                         replacement = str(int(q[pos]) + 1)
-                
+
                 # By now, either replacement worked out, or pos is at zero.
                 if pos == 0 and replacement == 0:
                     # All nines!
@@ -52,7 +52,7 @@ def main():
                 half_string = q[:pos] + replacement + '0'*(l/2-1-pos)
                 sys.stdout.write(half_string + half_string[::-1] + '\n')
                 continue
-            
+
             # The entire string is not a palindrome. j may be zero, but then
             # the last digit did not match.
             if q[i] < q[j]:
@@ -81,7 +81,7 @@ def main():
                 half_string = q[:pos] + replacement + '0'*(l/2-1-pos)
                 sys.stdout.write(half_string + half_string[::-1] + '\n')
                 continue
-        
+
         # Otherwise, string length is odd
         else:
             # Look at numbers from the middle outwards and compare
@@ -90,7 +90,7 @@ def main():
             while q[i] == q[j] and j:
                 i += 1
                 j -= 1
-            
+
             # If the entire string is a palindrome, then j would have become 0
             # and i would have become l-1
             if j == 0 and q[i] == q[j]:
@@ -123,7 +123,7 @@ def main():
                     half_string = q[:pos] + replacement + '0'*(l/2-pos)
                     sys.stdout.write(half_string + '0' + half_string[::-1] + '\n')
                 continue
-            
+
             # The entire string is not a palindrome. j may be zero, but then
             # the last digit did not match.
             if q[i] < q[j]:
